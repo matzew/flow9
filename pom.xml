@@ -16,6 +16,13 @@
 
     <dependencies>
 
+        <!-- Apache Kafka libs -->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${version.kafka.clients}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -71,7 +78,10 @@
     <properties>
         <!-- project build encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    
+
+        <!-- Kafka libs -->
+        <version.kafka.clients>1.0.0</version.kafka.clients>
+
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <ch.qos.logback.version>1.2.1</ch.qos.logback.version>

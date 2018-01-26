@@ -1,10 +1,7 @@
 package net.wessendorf.flow;
 
-import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
-import java.util.concurrent.SubmissionPublisher;
 
 public class MySubscriber<T> implements Subscriber<T> {
     private Subscription subscription;
@@ -17,7 +14,7 @@ public class MySubscriber<T> implements Subscriber<T> {
 
     @Override
     public void onNext(T item) {
-        System.out.println("Item : " + item);
+        System.out.println("Kafka VAL: : " + item);
         subscription.request(1);
     }
 
@@ -31,33 +28,4 @@ public class MySubscriber<T> implements Subscriber<T> {
         System.out.println("It's over");
     }
 
-
-
-    public static void main(String... args) throws Exception {
-
-        SubmissionPublisher<String> publisher = new SubmissionPublisher<>();
-        MySubscriber<String> subscriber = new MySubscriber<>();
-        publisher.subscribe(subscriber);
-        List<String> items = List.of("{foo: bar}", "<foo val=\"bar\" />");
-
-
-        items.forEach(publisher::submit);
-
-
-        while (true) {
-            publisher.submit(UUID.randomUUID().toString());
-            Thread.sleep(400);
-        }
-
-        // publisher.close();
-
-
-    }
-
-
-
-
-
-
-
-}    
+}
